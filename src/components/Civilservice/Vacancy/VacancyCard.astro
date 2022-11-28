@@ -1,0 +1,19 @@
+---
+import { BsFillArrowDownCircleFill } from "react-icons/bs/index.js";
+
+const params = Astro.props;
+---
+
+<div class="border rounded p-3">
+  <div class="flex items-center h-20 text-2xl">
+    <h3>{params.title}</h3>
+  </div>
+
+  <details class="">
+    <summary class="flex items-center gap-3 text-xl cursor-pointer list-none">
+      <BsFillArrowDownCircleFill />
+      Описание вакансии
+    </summary>
+    <div set:html={params.description} />
+  </details>
+</div>

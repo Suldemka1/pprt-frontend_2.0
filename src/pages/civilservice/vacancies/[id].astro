@@ -1,0 +1,26 @@
+---
+import PageName from "../../../components/PageName/PageName.astro";
+import CivilservicePageLayout from "../../../layouts/CivilservicePageLayout.astro";
+import StandartLayout from "../../../layouts/StandartLayout.astro";
+import VacancyCard from "../../../components/Civilservice/Vacancy/VacancyCard.astro";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.PUBLIC_URL}/api/vacancies?populate=*`)
+  const person = await response.json()
+
+  return person.data.map((person) => ({
+    params: { id: person.id.toString() },
+    props: { person },
+  }))
+}
+
+const { id } = Astro.params
+const { person } = Astro.props
+---
+<StandartLayout>
+  <CivilservicePageLayout>
+  <div>
+    <PageName title={person.title} />
+  </div>
+</CivilservicePageLayout>
+</StandartLayout>

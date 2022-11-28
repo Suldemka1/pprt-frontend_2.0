@@ -1,0 +1,27 @@
+---
+import PostPage from "../../components/Posts/PostPage.astro";
+import MainPageLayout from "../../layouts/MainPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+
+const { id } = Astro.params;
+
+const post = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/posts/${id}?populate=*`
+)
+  .then((res) => res.json())
+  .then((res) => res.data)
+  .catch((err) => console.error(err));
+---
+
+<StandartLayout>
+  <MainPageLayout>
+    <PostPage
+      id={post.id}
+      title={post.title}
+      preview_image={post.preview_image}
+      images={post.images}
+      body={post.body}
+      tags={post.tags.data}
+    />
+  </MainPageLayout>
+</StandartLayout>

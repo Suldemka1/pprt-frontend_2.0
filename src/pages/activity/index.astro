@@ -1,0 +1,18 @@
+---
+import ActivityPageLayout from "../../layouts/ActivityPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+import PageName from "../../components/PageName/PageName.astro";
+
+const res = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/main-activity-page?populate=*`
+);
+const data = await res.json();
+const content = await data.data;
+---
+
+<StandartLayout>
+  <PageName title="Деятельность" />
+  <ActivityPageLayout>
+    <div set:html={content.content}></div>
+  </ActivityPageLayout>
+</StandartLayout>

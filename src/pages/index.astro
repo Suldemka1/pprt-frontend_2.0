@@ -1,0 +1,95 @@
+---
+import MainPageLayout from "../layouts/MainPageLayout.astro";
+import StandartLayout from "../layouts/StandartLayout.astro";
+import Carousel from "../components/Carousel/Carousel.astro";
+import PostCard from "../components/Posts/PostCard";
+
+const res = await fetch(`${import.meta.env.PUBLIC_URL}/api/sliders?populate=*`)
+  .then((res) => res.json())
+  .then((res) => res.data);
+
+const news = await fetch(
+  `${
+    import.meta.env.PUBLIC_URL
+  }/api/posts?pagination[page]=1&pagination[pageSize]=5&sort=createdAt:desc&populate=*`
+)
+  .then((res) => res.json())
+  .then((res) => res.data);
+
+const imagelinks = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/links-on-mains?populate=*`
+);
+
+const sliderLinks = await fetch(
+  `${
+    import.meta.env.PUBLIC_URL
+  }/api/links-on-sliders?pagination[page]=1&pagination[pageSize]=3&populate=*`
+)
+  .then((res) => res.json())
+  .then((res) => res.data);
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="" href="/styles/globals.scss" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Полномочное представительство Республики Тыва в г. Москве</title>
+  </head>
+  <body>
+    <StandartLayout>
+      <MainPageLayout>
+        <div class="flex xs:flex-col md:flex-row gap-1">
+          <div class="xs:w-full md:w-4/5 max-w-4/5 flex flex-col relative">
+            <!-- <MyCarousel content={content} /> -->
+            <Carousel content={res} />
+            <div
+              class="flex xs:flex-col sm:flex-col md:flex-col lg:flex-row py-5"
+            >
+              <div class="flex flex-col gap-4 md:w-5/5 lg:w-5/5">
+                {
+                  news.map((item) => (
+                    <PostCard
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      preview_image={
+                        import.meta.env.PUBLIC_URL + item.preview_image.url
+                      }
+                      news_preview={item.news_preview}
+                      body={item.body}
+                      createdAt={item.createdAt}
+                    />
+                  ))
+                }
+
+                <!-- {paginationBasic} -->
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex xs:flex-row md:flex-col justify-between xs:w-full md:w-1/5 min-w-40 min-h-40 max-h-[720px]"
+          >
+            {
+              sliderLinks.map((item) => {
+                return (
+                  <a href={item.url} class="min-w-60 min-h-60 cursor-pointer">
+                    <img
+                      src={`${import.meta.env.PUBLIC_URL}${item.image.url}`}
+                      alt="First slide"
+                      width="250px"
+                      height="240px"
+                      class="min-w-40 min-h-40 dark:grayscale cursor-pointer"
+                    />
+                  </a>
+                );
+              })
+            }
+          </div>
+        </div>
+      </MainPageLayout>
+    </StandartLayout>
+  </body>
+</html>

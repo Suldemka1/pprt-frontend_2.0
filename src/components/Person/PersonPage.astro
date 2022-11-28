@@ -1,0 +1,52 @@
+---
+import PageName from "../PageName/PageName.astro";
+
+const params = Astro.props
+---
+
+<div>
+  <PageName title={params.position} />
+
+  <div class="border border-black rounded-md">
+    <div class="flex xs:flex-col md:flex-row gap-5">
+      <div class="min-w-fit max-w-full">
+        <img
+          alt="some"
+          src={String(params.preview_image)}
+          width={400}
+          height={400}
+          class="dark:grayscale"
+        />
+      </div>
+
+      <div class="p-3">
+        <div class="text-2xl font-normal">
+          <h4>{params.surname}</h4>
+          <h4>{params.name}</h4>
+          <h4>{params.patronymic}</h4>
+        </div>
+
+        <div class="text-xl font-normal">
+          <h4>Образование</h4>
+          <div class="text-xl font-light" set:html={params.education}>
+          </div>
+        </div>
+
+        <div class="text-xl font-normal">
+          <h4>Биография</h4>
+          <div class="text-xl font-light" set:html={params.biography}></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col bg-gray-100 border rounded-b-lg p-3 text-2xl gap-3"
+    >
+      <div class="font-normal">Контактные данные</div>
+      <div class="flex flex-col gap-2">
+        <div class="text-xl">{params.email}</div>
+        <div class="text-xl">{params.phone}</div>
+      </div>
+    </div>
+  </div>
+</div>

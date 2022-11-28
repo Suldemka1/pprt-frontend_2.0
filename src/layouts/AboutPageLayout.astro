@@ -1,0 +1,53 @@
+---
+import MobileMenu from "../components/MobileMenu";
+import MobileMenuItem from "../components/MobileMenu/MobileMenuItem";
+import SidebarMenu from "../components/Sidebar/SidebarMenu";
+import SidebarMenuItem from "../components/Sidebar/SidebarMenuItem";
+---
+
+<div>
+  <MobileMenu client:load>
+    <MobileMenuItem url='/' title='Главная' />
+    <MobileMenuItem url='/documents' title='Документы' />
+    <MobileMenuItem url='/sendrequest' title='Прием обращений' />
+    <MobileMenuItem url='/about' title='О государственном органе' />
+    <MobileMenuItem url='/activity' title='Деятельность' />
+    <MobileMenuItem url='/press-service' title='Пресс-служба' />
+    <MobileMenuItem url='/contacts' title='Контакты' />
+    <MobileMenuItem url='/management' title='Руководство' />
+    <MobileMenuItem url='/about/structure' title='Структура' />
+    <MobileMenuItem url='/news' title='Новости' />
+    <MobileMenuItem url='/documents' title='Документы' />
+    <MobileMenuItem url='/about/occupationalSecurity' title='Охрана труда' />
+    <MobileMenuItem url='/about/anticorruption' title='Противодействие коррупции' />
+    <MobileMenuItem url='/about/antiterror' title='Противодействие терроризму' />
+    <MobileMenuItem url='/vacancy' title='Государственная служба' />
+    <MobileMenuItem url='/about/purchases' title='Государственные закупки' />
+    <MobileMenuItem url='/about/reception' title='Прием граждан' />
+  </MobileMenu>
+
+  <div class="container mx-auto text-black font-light min-h-[500px]">
+
+    <div class="flex xs:flex-col md:flex-row gap-5">
+
+      <SidebarMenu>
+        <SidebarMenuItem url='/management' title='Руководство' />
+        <SidebarMenuItem url='/about/structure' title='Структура' />
+        <SidebarMenuItem url='/news' title='Новости' />
+        <SidebarMenuItem url='/about/occupationalSecurity' title='Охрана труда' />
+        <SidebarMenuItem url='/about/anticorruption' title='Противодействие коррупции'
+        />
+        <SidebarMenuItem url='/about/antiterror' title='Противодействие терроризму'
+        />
+        <SidebarMenuItem url='/civilservice' title='Государственная служба'
+        />
+        <SidebarMenuItem url='/about/purchases' title='Государственные закупки' />
+        <SidebarMenuItem url='/about/reception' title='Прием граждан' />
+      </SidebarMenu>
+
+      <div class="xs:w-full md:w-9/12 [&>ul]:list-disc [&>p]:text-justify sm:py-3 xs:py-3 md:py-0 lg:py-0">
+        <slot/>
+      </div>
+    </div>
+  </div>
+</div>

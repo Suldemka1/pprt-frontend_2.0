@@ -1,0 +1,31 @@
+---
+import PageName from "../../components/PageName/PageName.astro";
+import AboutPageLayout from "../../layouts/AboutPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+---
+
+<StandartLayout>
+  <PageName title="Структура" />
+  <AboutPageLayout>
+    <div>
+      <p>
+        Прием граждан временно исполняющим обязанности полномочного представителя
+        Республики Тыва в г. Москве Новиковым М.А. осуществляется еженедельно по
+        предварительной записи.
+      </p>
+      <p>Запись на прием возможно осуществить по телефону: +7(499)236-48-01.</p>
+      <p>
+        Прием осуществляется по адресу: 119049 г. Москва, ул. Донская, 8, корп. 2
+        (станции метро Шаболовская или Октябрьская).
+      </p>
+    
+      <div
+        class="flex justify-start items-start relative min-h-20 min-w-20 w-96 h-96 max-h-full max-w-full py-3"
+      >
+        <img src="/place.bmp" class="py-4" />
+      </div>
+    </div>
+  </AboutPageLayout>
+</StandartLayout>
+
+

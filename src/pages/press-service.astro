@@ -1,0 +1,16 @@
+---
+import PageName from "../components/PageName/PageName.astro";
+import MainPageLayout from "../layouts/MainPageLayout.astro";
+import StandartLayout from "../layouts/StandartLayout.astro";
+
+const res = await fetch(`${import.meta.env.PUBLIC_URL}/api/press-service`);
+const data = await res.json();
+const press = await data.data;
+---
+
+<StandartLayout>
+  <PageName title="Пресс-служба"/>
+  <MainPageLayout>
+    <div set:html={press.content} />
+  </MainPageLayout>
+</StandartLayout>

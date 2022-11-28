@@ -1,0 +1,25 @@
+---
+import PageName from "../../components/PageName/PageName.astro";
+import AboutPageLayout from "../../layouts/AboutPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+import DocumentLink from "../../components/Document/DocumentLink";
+
+const response = await fetch(`${import.meta.env.PUBLIC_URL}/api/about?populate=*`);
+const data = await response.json();
+const about = data.data;
+---
+
+<StandartLayout>
+  <PageName title="О государственном органе" />
+  <AboutPageLayout>
+    <div class="flex flex-col gap-4">
+      <div set:html={about.content}></div>
+      <DocumentLink
+        client:load
+        filename={about.files.name}
+        url={about.files.url}
+      />
+      <img src="/location.webp" alt="some" />
+    </div>
+  </AboutPageLayout>
+</StandartLayout>

@@ -1,0 +1,21 @@
+---
+import Header from "../components/Header/Header.astro";
+import Footer from "../components/Footer/Footer.astro";
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" /> -->
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js" is:inline
+    ></script>
+  </head>
+  <body class="">
+    <Header />
+    <div class="text-md">
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>

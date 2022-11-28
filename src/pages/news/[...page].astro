@@ -1,0 +1,51 @@
+---
+import PageName from "../../components/PageName/PageName.astro";
+import PostCard from "../../components/Posts/PostCard";
+import MainPageLayout from "../../layouts/MainPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+
+const posts = await fetch(`${import.meta.env.PUBLIC_URL}/api/posts?populate=*`)
+  .then((res) => res.json())
+  .catch((err) => console.error(err));
+---
+
+<StandartLayout>
+  <PageName title="Новости" />
+  <MainPageLayout>
+    <div>
+      <script type="text/javascript"></script>
+      <!-- <div set:html={pageName} /> -->
+      <div class="flex flex-col gap-4">
+        {
+          posts.data.map((item: any) => {
+            return (
+              <PostCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                preview_image={
+                  `${import.meta.env.PUBLIC_URL}` + item.preview_image.url
+                }
+                news_preview={item.news_preview}
+                body={item.body}
+                createdAt={item.createdAt}
+                client:load
+              />
+            );
+          })
+        }
+        <!-- <div class="flex items-center justify-center" set:html={items} /> -->
+      </div>
+    </div>
+
+    <script type="text/javascript" is:inline>
+      // const paginationButtons =
+      //   document.getElementsByClassName("pagination-button");
+      // Array.from(paginationButtons).forEach((button) => {
+      //   button.addEventListener("click", () => {
+      //     location.href = "/news?page=" + button.id;
+      //   });
+      // });
+    </script>
+  </MainPageLayout>
+</StandartLayout>

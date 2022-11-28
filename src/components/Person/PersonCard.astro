@@ -1,0 +1,48 @@
+---
+const params = Astro.props;
+---
+
+<div
+  id="card"
+  class="flex flex-col justify-between gap-5 w-12/12 min-w-5/12 h-88 border rounded-md xs:w-full xs:items-center sm:w-full md:w-12/12 lg:w-12/12"
+>
+  <div
+    id="card-header"
+    class="flex items-center bg-gray-100 p-5 text-xl font-semibold min-h-20 text-left md:w-full md:items-center md:justify-start xs:w-full xs:items-center xs:justify-center sm:w-full sm:items-center sm:justify-start"
+  >
+    <h3 class="md:text-lg w-10/12">{params.position}</h3>
+  </div>
+  <div
+    id="card-body"
+    class="flex gap-5 px-5 w-full h-fit xs:flex-col xs:justify-center xs:items-center sm:flex-row sm:justify-start sm:items-left md:flex-row md:justify-start md:items-left lg:flex-row lg:justify-start lg:items-left"
+  >
+    <div class="w-fit">
+      <img
+        src={import.meta.env.PUBLIC_URL + params.avatar.url}
+        alt="some"
+        width="200"
+        height="200"
+        class="rounded-full"
+      />
+    </div>
+
+    <div class="flex flex-col justify-between gap-5">
+      <div class="flex flex-col gap-2 text-2xl">
+        <p>{params.surname}</p>
+        <p>{params.name}</p>
+        <p>{params.patronymic}</p>
+      </div>
+
+      <div class="text-lg">
+        <p>{params.phone}</p>
+        <p>{params.email}</p>
+      </div>
+    </div>
+  </div>
+  <div
+    id="footer"
+    class="flex justify-end bg-gray-100 p-5 xs:w-full xs:items-center xs:justify-center lg:justify-end"
+  >
+    <a href={`/management/${params.id}`}>Перейти в профиль</a>
+  </div>
+</div>

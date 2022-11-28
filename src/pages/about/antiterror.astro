@@ -1,0 +1,19 @@
+---
+import AboutPageLayout from "../../layouts/AboutPageLayout.astro";
+import PageName from "../../components/PageName/PageName.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+import DocumentLink from "../../components/Document/DocumentLink";
+
+const res = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/antiterror-page?populate=*`
+);
+const data = await res.json();
+const content = await data.data;
+---
+
+<StandartLayout>
+  <PageName title="Противодействие терроризму" />
+  <AboutPageLayout>
+    <div set:html={content?.content} ></div>
+  </AboutPageLayout>
+</StandartLayout>

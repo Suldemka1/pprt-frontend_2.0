@@ -1,0 +1,60 @@
+---
+import { AiFillPhone, AiOutlineMail } from "react-icons/ai/index.js";
+---
+
+<footer class="sticky top-[100vh] bg-blue-900 dark:bg-gray-200 p-4 font-light">
+  <div class="container flex flex-col mx-auto gap-4 text-white dark:text-black">
+    <div class="flex flex-wrap justify-between">
+      <div class="flex flex-col gap-4">
+        <a href="/">Полномочное представительство Республики Тыва в г. Москве</a
+        >
+        <a href="/">Официальный интернет-ресурс</a>
+
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-row items-center gap-3">
+            <AiFillPhone />+7(499)236-48-01
+          </div>
+          <div class="flex flex-row items-center gap-3">
+            <AiOutlineMail />info@pprt17.ru
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <a class="cursor-pointer" href="https://vk.com/club132363710"
+            ><img
+              alt="some"
+              src="/vk_logo.png"
+              width="30px"
+              height="30px"
+              class="cursor-pointer dark:grayscale"
+            />
+          </a>
+
+          <a class="cursor-pointer" href="https://t.me/polpredstvotuva"
+            ><img
+              alt="some"
+              src="/tg_logo.png"
+              width="30px"
+              height="30px"
+              class="cursor-pointer dark:grayscale"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-between">
+        {
+          /* <Link href="/documents/sample.pdf">
+                        <a>Использование материалов</a>
+                    </Link>
+                    <Link href="/documents/personal_data.docx">
+                        <a>О персональной информации пользователей</a>
+                    </Link> */
+        }
+      </div>
+    </div>
+    <hr />
+    <div class="">
+      <p>Все материалы сайта доступны по лицензии: Лицензия на пользование</p>
+    </div>
+  </div>
+</footer>

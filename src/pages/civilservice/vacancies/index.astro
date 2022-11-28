@@ -1,0 +1,30 @@
+---
+import PageName from "../../../components/PageName/PageName.astro";
+import CivilservicePageLayout from "../../../layouts/CivilservicePageLayout.astro";
+import StandartLayout from "../../../layouts/StandartLayout.astro";
+import VacancyCard from "../../../components/Civilservice/Vacancy/VacancyCard.astro";
+
+const res = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/vacancies?populate=*`
+).then((res) => res.json());
+const vacancy = await res.data;
+---
+
+<StandartLayout>
+  <PageName
+    title="Сведения о вакантных должностях государственной гражданской службы"
+  />
+  <CivilservicePageLayout>
+    <div class="flex flex-row gap-5 w-full">
+      <div class="flex flex-col gap-5 md:w-9/12">
+        {
+          vacancy.map(({ id, title, description }) => {
+            return (
+              <VacancyCard key={id} title={title} description={description} />
+            );
+          })
+        }
+      </div>
+    </div>
+  </CivilservicePageLayout>
+</StandartLayout>

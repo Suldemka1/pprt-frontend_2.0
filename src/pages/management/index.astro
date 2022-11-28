@@ -1,0 +1,55 @@
+---
+import PersonCard from "../../components/Person/PersonCard.astro";
+import PageName from "../../components/PageName/PageName.astro";
+import AboutPageLayout from "../../layouts/AboutPageLayout.astro";
+import StandartLayout from "../../layouts/StandartLayout.astro";
+
+const res = await fetch(`${import.meta.env.PUBLIC_URL}/api/staffs?populate=*`);
+const data = await res.json();
+const staff = await data.data;
+---
+
+<StandartLayout>
+  <PageName
+    title="Руководство полномочного представительства Республики Тыва в г. Москве"
+  />
+  <AboutPageLayout>
+    <div class="flex flex-wrap gap-4 justify-between">
+      {
+        staff.map((item : any) => {
+          if (item.id === 1) {
+            return (
+              <span class="w-full">
+                <PersonCard
+                  id={item.id}
+                  key={item.id}
+                  surname={item.surname}
+                  name={item.name}
+                  patronymic={item.patronymic}
+                  position={item.position}
+                  email={item.email}
+                  phone={item.phone}
+                  avatar={item.avatar}
+                />
+              </span>
+            );
+          } else {
+            return (
+              <PersonCard
+                id={item.id}
+                key={item.id}
+                surname={item.surname}
+                name={item.name}
+                patronymic={item.patronymic}
+                position={item.position}
+                email={item.email}
+                phone={item.phone}
+                avatar={item.avatar}
+              />
+            );
+          }
+        })
+      }
+    </div>
+  </AboutPageLayout>
+</StandartLayout>

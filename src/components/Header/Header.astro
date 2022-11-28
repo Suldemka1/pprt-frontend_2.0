@@ -1,0 +1,32 @@
+---
+import HeaderNavbar from "./HeaderNavbar";
+import { FaRegEye } from "react-icons/fa/index.js";
+import HeaderSearchField from "./HeaderSearchField";
+---
+
+<header class="flex flex-col bg-blue-900 text-white font-light">
+  <div
+    class="container mx-auto flex xs:flex-col md:flex-row xs:items-start md:items-center gap-4 justify-between py-4"
+  >
+    <div class="flex flex-row items-center text-lg font-light gap-3">
+      <div class="sm:hidden xs:hidden md:block">
+        <img alt="some" src="/tuvan_herb.png" width={50} height={50} />
+      </div>
+
+      <h1 class="text-2xl text-white font-normal">
+        Полномочное представительство Республики Тыва в г. Москве
+      </h1>
+    </div>
+
+    <div class="flex gap-3 items-center">
+      <div class="w-7 h-7">
+        <FaRegEye id="specialButton" className="w-full h-full cursor-pointer" />
+      </div>
+      <HeaderSearchField />
+    </div>
+  </div>
+  <HeaderNavbar />
+  <script src="https://lidrekon.ru/slep/js/jquery.js" is:inline></script>
+  <script src="https://lidrekon.ru/slep/js/uhpv-full.min.js" is:inline
+  ></script>
+</header>

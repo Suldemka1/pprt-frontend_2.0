@@ -1,0 +1,44 @@
+---
+const params = Astro.props
+---
+
+<div class="py-3">
+  <div class="text-2xl py-3">{params.title}</div>
+  <div class="py-3 leading-8">
+    <div set:html={params.body}></div>
+  </div>
+  {
+    //тернарный оператор если в новости одно изображение, то показывается изображение, а не слайдер
+    params.images.length < 2 ? (
+      <img
+        alt="some"
+        src={`${import.meta.env.PUBLIC_URL}` + params.preview_image.url}
+        width="1280px"
+        height="780px"
+      />
+    ) : (
+      <div class="xs:w-full md:w-full">
+        <div class="flex flex-row justify-between flex-wrap">
+          {params.images.map((item) => (
+            <div
+              class="relative min-w-[300px] min-h-[calc(300px)]"
+            >
+              <img
+                src={`${import.meta.env.PUBLIC_URL}${item.url}`}
+                alt="First slide"
+                width="960px"
+                height="720px"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <br />
+  <button
+    class="button dark:bg-gray-500"
+    >Назад к новостям
+  </button>
+</div>
