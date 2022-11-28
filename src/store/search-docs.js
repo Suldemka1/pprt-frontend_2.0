@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 class SearchDocs {
+  query = 'query'
   doc_title
   result = []
 
