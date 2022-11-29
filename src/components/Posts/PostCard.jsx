@@ -32,7 +32,7 @@ const PostCard = (params) => {
               {/* {unixTimeConverter(params.createdAt)} */}
             </div>
 
-            <a href={`/news/post/${params.id}`} className="button dark:bg-gray-500">
+            <a href={`/news/post-${params.id}`} className="button dark:bg-gray-500">
               Читать
             </a>
           </div>

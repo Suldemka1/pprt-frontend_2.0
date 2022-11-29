@@ -1,11 +1,12 @@
 ---
-const params = Astro.props
+const params = Astro.props;
 ---
 
 <div class="py-3">
+  <a href="/news" class="button dark:bg-gray-500">Назад к новостям</a>
   <div class="text-2xl py-3">{params.title}</div>
   <div class="py-3 leading-8">
-    <div set:html={params.body}></div>
+    <div set:html={params.body} />
   </div>
   {
     //тернарный оператор если в новости одно изображение, то показывается изображение, а не слайдер
@@ -17,28 +18,17 @@ const params = Astro.props
         height="780px"
       />
     ) : (
-      <div class="xs:w-full md:w-full">
-        <div class="flex flex-row justify-between flex-wrap">
-          {params.images.map((item) => (
-            <div
-              class="relative min-w-[300px] min-h-[calc(300px)]"
-            >
-              <img
-                src={`${import.meta.env.PUBLIC_URL}${item.url}`}
-                alt="First slide"
-                width="960px"
-                height="720px"
-              />
-            </div>
-          ))}
-        </div>
+      <div class="xs:w-full md:w-full flex flex-row justify-between flex-wrap">
+        {params.images.map((item) => (
+          <div class="max-h-1/3 max-w-[300px]">
+            <img
+              src={`${import.meta.env.PUBLIC_URL}${item.url}`}
+              alt="First slide"
+              class="max-h-1/3 max-w-1/3 object-cover"
+            />
+          </div>
+        ))}
       </div>
     )
   }
-
-  <br />
-  <button
-    class="button dark:bg-gray-500"
-    >Назад к новостям
-  </button>
 </div>

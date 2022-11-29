@@ -4,10 +4,6 @@ import searchDocs from "../../store/search-docs";
 import DocumentCard from "../../components/Document/DocumentCard";
 
 const DocumentsPage = observer(() => {
-  useEffect(() => {
-    searchfunction();
-  }, []);
-
   const searchfunction = async () => {
     if (
       searchDocs.query !== undefined &&
@@ -20,9 +16,14 @@ const DocumentsPage = observer(() => {
     }
   };
 
+  useEffect(() => {
+    searchfunction();
+    searchDocs.fetchTypes();
+  }, []);
+
   return (
     <div class="flex xs:flex-col gap-5">
-      {/* <div className="flex flex-row gap-5 md:w-8/12">
+      <div className="flex flex-row gap-5 md:w-8/12">
         <input
           defaultValue={searchDocs.doc_title}
           placeholder="Поиск по заголовку"
@@ -53,7 +54,7 @@ const DocumentsPage = observer(() => {
             <option key="все" value="все">
               Все
             </option>
-            {types.map((item) => {
+            {searchDocs.types.map((item) => {
               return (
                 <option key={item.id} value={item.title}>
                   {item.title}
@@ -62,7 +63,7 @@ const DocumentsPage = observer(() => {
             })}
           </select>
         </div>
-      </div> */}
+      </div>
 
       <div className="flex flex-col gap-4 xs:w-full min-h-[25vh] md:w-8/12">
         {searchDocs.result.map((item) => {

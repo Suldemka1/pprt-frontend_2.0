@@ -4,9 +4,9 @@ import PageName from "../../components/PageName/PageName.astro";
 import AboutPageLayout from "../../layouts/AboutPageLayout.astro";
 import StandartLayout from "../../layouts/StandartLayout.astro";
 
-const res = await fetch(`${import.meta.env.PUBLIC_URL}/api/staffs?populate=*`);
-const data = await res.json();
-const staff = await data.data;
+const staff = await fetch(`${import.meta.env.PUBLIC_URL}/api/staffs?populate=*`)
+  .then((res) => res.json())
+  .then((res) => res.data);
 ---
 
 <StandartLayout>
@@ -16,7 +16,7 @@ const staff = await data.data;
   <AboutPageLayout>
     <div class="flex flex-wrap gap-4 justify-between">
       {
-        staff.map((item : any) => {
+        staff.map((item: any) => {
           if (item.id === 1) {
             return (
               <span class="w-full">

@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
 
 class SearchDocs {
-  query = 'query'
+  query = ''
   doc_title
+  types = [{id: 0, title: 'все'}]
   result = []
 
   constructor() {
@@ -15,6 +16,14 @@ class SearchDocs {
 
   setType(string) {
     this.type = string
+  }
+
+  fetchTypes() {
+    fetch(`${import.meta.env.PUBLIC_URL}/api/document-types`)
+    .then((response) => response.json())
+    .then((response) => {
+      this.types = response.data
+    })
   }
 
   fetchDocsByTypes(doc_type) {

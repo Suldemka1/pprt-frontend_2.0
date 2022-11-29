@@ -2,7 +2,6 @@ import { makeAutoObservable } from "mobx";
 
 class AppealSlice {
 
-  
   constructor() {
     makeAutoObservable(this)
   }

@@ -1,0 +1,37 @@
+---
+import project from "./project.module.scss";
+
+const params = Astro.props
+---
+
+<div class={project.card}>
+  <div class={project.header}>
+    <h3>{params.title}</h3>
+  </div>
+
+  <div class={project.body}>
+    <div class="img_container_md">
+      <img
+        alt="some"
+        src={import.meta.env.PUBLIC_URL + params.image}
+        width="300px"
+        height="200px"
+        class="dark:grayscale"
+      />
+    </div>
+
+    <div class={project.content} set:html={params.shortDescription}>
+      <a
+        href={`${import.meta.env.PUBLIC_URL}` + params.documentURL}
+        class="button dark:bg-gray-500"
+        >Паспорт программы
+      </a>
+    </div>
+  </div>
+
+  <div class={project.footer}>
+    <p>Статус: {params.status}</p>
+
+    <a href={params.href} class="button dark:bg-gray-500">Подробнее</a>
+  </div>
+</div>

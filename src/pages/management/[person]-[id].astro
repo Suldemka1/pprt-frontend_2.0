@@ -3,18 +3,13 @@ import PersonPage from "../../components/Person/PersonPage.astro";
 import MainPageLayout from "../../layouts/MainPageLayout.astro";
 import StandartLayout from "../../layouts/StandartLayout.astro";
 
-export async function getStaticPaths() {
-  const response = await fetch(`${import.meta.env.PUBLIC_URL}/api/staffs?populate=*`)
-  const person = await response.json()
+const { id } = Astro.params;
 
-  return person.data.map((person) => ({
-    params: { id: person.id.toString() },
-    props: { person },
-  }))
-}
-
-const { id } = Astro.params
-const { person } = Astro.props
+const person = await fetch(
+  `${import.meta.env.PUBLIC_URL}/api/staffs/${id}?populate=*`
+)
+  .then((res) => res.json())
+  .then((res) => res.data);
 ---
 
 <StandartLayout>
@@ -28,7 +23,7 @@ const { person } = Astro.props
       position={person.position}
       education={person.education}
       biography={person.biography}
-      preview_image={import.meta.env.PUBLIC_URL+person.avatar.url}
+      preview_image={import.meta.env.PUBLIC_URL + person.avatar.url}
       email={person.email}
       phone={person.phone}
     />

@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'ini.scss';
+@import "ini.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 * {
-  font-family: 'Golos-UI', serif !important;
-  font-family: 'Roboto', sans-serif !important;
+  font-family: "Golos-UI", serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 body {
@@ -28,7 +28,7 @@ img {
   padding-right: 1.5rem;
   background-color: rgb(30 58 138);
   transition-property: background-color, border-color, color, fill, stroke,
-  opacity, box-shadow, transform;
+    opacity, box-shadow, transform;
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   color: #ffffff;
@@ -38,13 +38,13 @@ img {
   text-transform: uppercase;
   border-radius: 0.25rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .button:hover {
   background-color: #1d4ed8;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .button-dark {
@@ -52,8 +52,8 @@ img {
 }
 
 ul {
-  list-style: disc;
-  margin-left: 20px;
+  list-style: disc !important;
+  margin-left: 5px !important;
 }
 
 li {
@@ -63,6 +63,7 @@ li {
 .hideMenuNav {
   display: none;
 }
+
 .showMenuNav {
   position: fixed;
   width: 65vw;
@@ -71,7 +72,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  
+
   background: rgb(30 58 138);
   z-index: 10;
   display: flex;

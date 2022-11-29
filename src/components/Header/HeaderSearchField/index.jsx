@@ -5,12 +5,12 @@ import searchQuery from "../../../store/search-query";
 
 const HeaderSearchField = observer(() => {
   return (
-    <div className="flex flex-row justify-center items-center p-1 bg-white cursor-pointer">
+    <div className="flex flex-row justify-center items-center bg-white cursor-pointer">
       <input
         type="text"
         placeholder="Поиск"
         onChange={(e) => searchQuery.search(e.target.value)}
-        className="text-sm text-black outline-0 border-none"
+        className="text-xs text-black outline-none border-none"
       />
 
       <a href="/search">

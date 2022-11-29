@@ -1,0 +1,15 @@
+---
+import PageName from "../components/PageName/PageName.astro";
+import SearchPage from "../components/Search/search";
+import MainPageLayout from "../layouts/MainPageLayout.astro";
+import StandartLayout from "../layouts/StandartLayout.astro";
+
+
+---
+
+<StandartLayout>
+  <PageName title="Поиск по новостям" />
+  <MainPageLayout>
+    <SearchPage client:load/>
+  </MainPageLayout>
+</StandartLayout>

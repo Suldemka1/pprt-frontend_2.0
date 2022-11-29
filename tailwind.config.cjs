@@ -1,10 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	darkMode: ['class', '[data-theme="dark"]'],
-	lightMode: ['class', '[data-theme="light"]'],
-	a1Mode: ['class', '[font-size="A1"]'],
-	a2Mode: ['class', '[font-size="A2"]'],
-	a3Mode: ['class', '[font-size="A3"]'],
 	content: ['./src/**/*.{astro,html,js,mjs,cjs,jsx,md,mdx,svelte,ts,tsx,vue}',
 		"./node_modules/flowbite/**/*.js"
 	],
